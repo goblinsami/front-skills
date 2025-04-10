@@ -18,7 +18,8 @@ const goBack = () => {
     router.back()
 }
 const editNavbar = () => {
-    toggleEditMode()
+    console.log('editNavbar')
+    store.toggleEditMode()
 }
 const editMode = computed(() => store.isEditMode)
 
@@ -40,28 +41,23 @@ const handleEnd = () => {
 }
 </script>
 <template>
-    <div class="draggable-container">
 
-        <VueDraggable item-key="id" @end="handleDrop" @start="handleStart" @move="handleStart" :group="'single-item'"
-            v-model="todoSection">
-            <template #item>
-                <nav class="navbar" ref="navBar" :class="[editMode ? 'editMode' : '', 'nav_' + activeNavbarPosition]"
-                    v-if="!isDragging">
-                    <div class="button_block" :class="'btn_block_' + activeNavbarPosition">
-                        <a class="button" @click="goBack">Volver</a>
 
-                        <RouterLink class="button" to="/">Home</RouterLink>
+    <nav class="navbar" ref="navBar" :class="[editMode ? 'editMode' : '', 'nav_' + activeNavbarPosition]">
+        <div class="button_block" :class="'btn_block_' + activeNavbarPosition">
+            <a class="button" @click="goBack">Volver</a>
 
-                        <RouterLink class="button" to="/board">Board</RouterLink>
-                    </div>
-                    <div class="button_block">
-                        <a class="button edit" @click="editNavbar">Edit</a>
+            <RouterLink class="button" to="/">Home</RouterLink>
 
-                    </div>
-                </nav>
-            </template>
-        </VueDraggable>
-    </div>
+            <RouterLink class="button" to="/board">Board</RouterLink>
+        </div>
+        <div class="button_block">
+            <a class="button edit" @click="editNavbar">Edit</a>
+
+        </div>
+    </nav>
+
+
 </template>
 <style>
 .button_block {
@@ -84,14 +80,14 @@ const handleEnd = () => {
     gap: 1rem;
 }
 
-.editMode {
+/* .editMode {
     background: rgba(246, 247, 214, 0.1) !important;
     border: dashed 1px #1b1b1b;
     opacity: 0.5;
     cursor: grab;
 
 }
-
+ */
 .edit {
     border: none;
     opacity: 0;
@@ -118,7 +114,6 @@ const handleEnd = () => {
 }
 
 .nav_top {
-    width: 100%;
     align-items: center;
     flex-direction: row;
 }

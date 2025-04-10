@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 import VueDraggable from 'vuedraggable'
 import { useUserStore } from '../stores/userStore'
-const { setNavbarPosition } = useUserStore()
+const { setNavbarPosition, toggleEditMode } = useUserStore()
 
 // Secciones con tareas
 const todoSection = ref([
@@ -72,6 +72,8 @@ const handleEnd = (event) => {
       <button @click="setNavbarPosition('left')">left</button>
       <button @click="setNavbarPosition('right')">right</button>
       <button @click="setNavbarPosition('bottom')">bottom</button>
+      <button @click="toggleEditMode()">bottom</button>
+
     </div>
   </h1>
   <div class="kanban">

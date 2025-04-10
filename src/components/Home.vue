@@ -15,6 +15,8 @@ const { setNavbarPosition } = useUserStore()
     <button @click="setNavbarPosition('left')">left</button>
     <button @click="setNavbarPosition('right')">right</button>
     <button @click="setNavbarPosition('bottom')">bottom</button>
+    <button @click="setNavbarPosition('bottom')">bottom</button>
+
 </template>
 <style>
 h1 {
